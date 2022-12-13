@@ -43,7 +43,7 @@ func TestPreview(t *testing.T) {
 	}
 	d.DrawString("The quick brown fox jumps over the lazy dog.")
 	for i := 0; i < 8; i++ {
-		d.Dot = fixed.P(20, 60+i*30)
+		d.Dot = fixed.P(20, 70+i*30)
 		d.DrawString(runeRange(t, i*0x20, 0x20))
 	}
 	writeImage(t, "preview.png", dst)
