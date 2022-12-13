@@ -11,13 +11,13 @@ import (
 	"golang.org/x/image/math/fixed"
 )
 
-func byteRange(t *testing.T, i, n int) []byte {
+func runeRange(t *testing.T, from, count int) string {
 	t.Helper()
-	b := make([]byte, n)
-	for x := 0; x < n; x++ {
-		b[x] = byte(i + x)
+	b := make([]rune, count)
+	for i := 0; i < count; i++ {
+		b[i] = rune(from + i)
 	}
-	return b
+	return string(b)
 }
 
 func writeImage(t *testing.T, name string, img image.Image) {
@@ -33,7 +33,7 @@ func writeImage(t *testing.T, name string, img image.Image) {
 }
 
 func TestPreview(t *testing.T) {
-	dst := image.NewRGBA(image.Rect(0, 0, 560, 180))
+	dst := image.NewRGBA(image.Rect(0, 0, 560, 300))
 	draw.Draw(dst, dst.Bounds(), image.White, image.Point{}, draw.Src)
 	d := &font.Drawer{
 		Dst:  dst,
@@ -42,9 +42,9 @@ func TestPreview(t *testing.T) {
 		Dot:  fixed.P(20, 30),
 	}
 	d.DrawString("The quick brown fox jumps over the lazy dog.")
-	for i := 0; i < 4; i++ {
+	for i := 0; i < 8; i++ {
 		d.Dot = fixed.P(20, 60+i*30)
-		d.DrawBytes(byteRange(t, i*0x20, 0x20))
+		d.DrawString(runeRange(t, i*0x20, 0x20))
 	}
 	writeImage(t, "preview.png", dst)
 }

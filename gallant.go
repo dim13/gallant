@@ -11,8 +11,8 @@ var Gallant = &basicfont.Face{
 	Advance: 12,
 	Width:   12,
 	Height:  22,
-	Ascent:  16,
-	Descent: 6,
+	Ascent:  17,
+	Descent: 5,
 	Left:    0,
 	Mask: &image.Alpha{
 		Pix:    data,
@@ -20,8 +20,7 @@ var Gallant = &basicfont.Face{
 		Rect:   image.Rect(0, 0, 12, 22*256),
 	},
 	Ranges: []basicfont.Range{
-		{Low: '\u0000', High: '\u007f', Offset: 0},
-		{Low: '\ufffd', High: '\ufffe', Offset: 255},
+		{Low: '\u0000', High: '\u0100', Offset: 0},
 	},
 }
 
