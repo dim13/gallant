@@ -33,17 +33,17 @@ func writeImage(t *testing.T, name string, img image.Image) {
 }
 
 func TestPreview(t *testing.T) {
-	dst := image.NewRGBA(image.Rect(0, 0, 560, 300))
+	dst := image.NewRGBA(image.Rect(0, 0, 570, 270))
 	draw.Draw(dst, dst.Bounds(), image.White, image.Point{}, draw.Src)
 	d := &font.Drawer{
 		Dst:  dst,
 		Src:  image.Black,
 		Face: Gallant,
-		Dot:  fixed.P(20, 30),
+		Dot:  fixed.P(20, 25),
 	}
 	d.DrawString("The quick brown fox jumps over the lazy dog.")
 	for i := 0; i < 8; i++ {
-		d.Dot = fixed.P(20, 70+i*30)
+		d.Dot = fixed.P(20, 75+i*25)
 		d.DrawString(runeRange(t, i*0x20, 0x20))
 	}
 	writeImage(t, "preview.png", dst)
