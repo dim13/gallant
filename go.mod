@@ -1,5 +1,5 @@
 module github.com/dim13/gallant
 
-go 1.19
+go 1.20
 
-require golang.org/x/image v0.2.0
+require golang.org/x/image v0.7.0
