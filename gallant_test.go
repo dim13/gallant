@@ -46,5 +46,5 @@ func TestPreview(t *testing.T) {
 		d.Dot = fixed.P(20, 75+i*25)
 		d.DrawString(runeRange(t, i*0x20, 0x20))
 	}
-	writeImage(t, "preview.png", dst)
+	writeImage(t, "img/preview.png", dst)
 }
